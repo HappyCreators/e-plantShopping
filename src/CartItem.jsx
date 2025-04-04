@@ -9,11 +9,6 @@ const CartItem = ({ onContinueShopping }) => {
 
 
     const parseItemCostToInteger = (itemCost) => {
-        /*
-            Remove currency symbol before multiplication.
-            Otherwise, NaN returned.
-            Improve in future: Use regex to remove all possible currency symbols?
-        */
         return parseInt(itemCost.replace('$', ''), 10);
     };
 
@@ -47,7 +42,6 @@ const CartItem = ({ onContinueShopping }) => {
         const updatedItem = { ...item };
 
         if (updatedItem.quantity == 1) {
-            // Remove item if number of items gets decremented to 0
             dispatch(removeItem(updatedItem));
         } else {
             updatedItem.quantity--;
